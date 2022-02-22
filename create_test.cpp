@@ -8,7 +8,7 @@ mt19937 rd(chrono::steady_clock::now().time_since_epoch().count());
 int iFirst = 50;
 int iLast = 50;
 
-const string TASKNAME = "XOASO";
+const string TASKNAME = "";
 
 string intToString(int x){
   stringstream ss;
