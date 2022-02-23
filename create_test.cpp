@@ -3,7 +3,7 @@ using namespace std;
 
 #define int long long
 
-mt19937 rd(chrono::steady_clock::now().time_since_epoch().count());
+mt19937_64 rd(chrono::steady_clock::now().time_since_epoch().count());
 
 int iFirst = 50;
 int iLast = 50;
