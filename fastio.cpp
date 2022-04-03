@@ -89,9 +89,7 @@ static struct FastInput {
     return *this;
   }
 } fast_input;
- 
-#define cin fast_input
- 
+  
 static struct FastOutput {
   static constexpr int BUF_SIZE = 1 << 20;
   char buf[BUF_SIZE];
@@ -181,4 +179,6 @@ static struct FastOutput {
   }
 } fast_output;
  
+#define cin fast_input
 #define cout fast_output
+#define endl '\n'
