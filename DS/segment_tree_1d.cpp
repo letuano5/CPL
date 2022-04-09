@@ -2,7 +2,7 @@
 // 1-indexed
 struct SegTree {
   typedef int T;
-  T func (int a, int b) {
+  T func (T a, T b) {
     return max(a, b);
   }
 
