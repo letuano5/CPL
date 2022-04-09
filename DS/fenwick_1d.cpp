@@ -1,4 +1,4 @@
-// Support: get max/min/gcd/sum... of prefix, update point
+// Support: increase a single element & get prefix sum
 // 1-indexed
 // Tested with: https://codeforces.com/contest/1660/problem/F2
 
