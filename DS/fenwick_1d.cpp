@@ -24,7 +24,7 @@ struct BIT {
     }
   }
 
-  T get (T idx) {
+  T get (int idx) {
     T ans = unit;
     for (; idx > 0; idx -= idx & -idx) {
       ans = func(ans, fen[idx]);
