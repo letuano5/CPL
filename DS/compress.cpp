@@ -1,3 +1,5 @@
+// use: Compressor <type> cp;
+
 #define all(x) (x).begin(), (x).end()
 template <class T>
 struct Compressor {
