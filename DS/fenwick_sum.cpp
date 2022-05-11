@@ -1,3 +1,4 @@
+
 // add + sum range, 1 - indexed
 template <class T>
 struct FT {
@@ -20,19 +21,19 @@ struct FT2 {
   FT <T> ft1, ft2;
   int n;
   FT2 (int _n = 0) {
-    ft1 = FT(_n + 5); ft2 = FT(_n + 5);
+    ft1 = FT <T> (_n + 5); ft2 = FT <T> (_n + 5);
     n = _n;
   }
   void upd (int l, int r, T val) {
-    ft1.upd(l, (n - l + 1) * v);
-    ft1.upd(r + 1, -(n - r) * v);
-    ft2.upd(l, v);
-    ft2.upd(r + 1, -v);
+    ft1.upd(l, (n - l + 1) * val);
+    ft1.upd(r + 1, -(n - r) * val);
+    ft2.upd(l, val);
+    ft2.upd(r + 1, -val);
   }
   int pre (int id) {
     return ft1.get(id) - ft2.get(id) * (n - id);
   }
   int sum (int low, int high) {
-    return pre(r) - pre(l - 1);
+    return pre(high) - pre(low - 1);
   }
 };
