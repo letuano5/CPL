@@ -1,5 +1,6 @@
 // https://docs.google.com/document/d/1dvJCzsaMlZbB8XyG789f1NQVv3-q52kiUNkCUGTANis/edit
-// my submission of https://oj.vnoi.info/problem/paliny
+// my submission of https://cses.fi/problemset/task/1111/
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -16,7 +17,10 @@ void odd_manacher(string s, int *p) {
   s = DUMMY + s + DUMMY;
   int l = 0, r = -1;
 
+  int dem = 0;
+
   for (int i = 1; i <= n; i++) {
+//    cout << "Fuck" << i << endl;
     if (i > r)
       p[i] = 0;
     else
@@ -50,21 +54,26 @@ int main(){
   cin.tie(0);
   cout.tie(0);
 
-  int n; string s;
-  cin >> n >> s;
+  string s;
+  cin >> s;
+  int n = s.size();
 
   odd_manacher(s, odd_center);
   even_manacher(s, even_center);
 
-  int best = 0;
+
+  int best_l = -1, best_r = -1;
+  s = ' ' + s;
 
   for (int i = 1; i <= n; i++) {
     int l = i - odd_center[i], r = i + odd_center[i];
-    best = max(best, r - l + 1);
-    l = i - even_center[i] + 1, r = i + even_center[i];
-    best = max(best, r - l + 1);
+    if (r - l + 1 > best_r - best_l + 1)
+      best_l = l, best_r = r;
+    l = i - even_center[i], r = i + even_center[i] - 1;
+    if (l >= 1 && r <= n && l <= r && r - l + 1 > best_r - best_l + 1)
+      best_l = l, best_r = r;
   }
 
-  cout << best;
+  cout << s.substr(best_l, best_r - best_l + 1);
   return 0;
 }
