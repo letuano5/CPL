@@ -1,5 +1,5 @@
 // https://docs.google.com/document/d/1dvJCzsaMlZbB8XyG789f1NQVv3-q52kiUNkCUGTANis/edit
-
+// my submission of https://oj.vnoi.info/problem/paliny
 #include<bits/stdc++.h>
 using namespace std;
 
