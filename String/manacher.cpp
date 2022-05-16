@@ -20,7 +20,6 @@ void odd_manacher(string s, int *p) {
   int dem = 0;
 
   for (int i = 1; i <= n; i++) {
-//    cout << "Fuck" << i << endl;
     if (i > r)
       p[i] = 0;
     else
