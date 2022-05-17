@@ -46,7 +46,7 @@ struct SegTree {
 
   T get (int id, int l, int r, int u, int v) {
     if (v < l || r < u) {
-      return 0;
+      return unit;
     }
     if (u <= l && r <= v) {
       return st[id];
