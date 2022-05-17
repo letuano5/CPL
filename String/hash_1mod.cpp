@@ -1,5 +1,5 @@
 const int BASE = 37;
-const long long MOD = 1e9 + 9277;
+const long long MOD = 1e9 + 2277;
 const char BASE_CHAR = 'a';
 
 long long power[N];
