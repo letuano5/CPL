@@ -28,8 +28,8 @@ struct BIT2D {
     }
   }
 
-  int get (int _u, int _v) {
-    int ans = unit;
+  T get (int _u, int _v) {
+    T ans = unit;
     _u++;
     _v++;
     assert (_u >= 1 && _u < ft.size() && _v >= 1 && _v < ft[0].size());
@@ -42,7 +42,7 @@ struct BIT2D {
   }
 
   // only for sum!
-  int get (int u, int v, int x, int y) {
+  T get (int u, int v, int x, int y) {
     return get(x, y) - get(u - 1, y) - get(x, v - 1) + get(u - 1, v - 1);
   }
 };
