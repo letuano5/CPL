@@ -30,10 +30,10 @@ struct FT2 {
     ft2.upd(l, val);
     ft2.upd(r + 1, -val);
   }
-  int pre (int id) {
+  T pre (int id) {
     return ft1.get(id) - ft2.get(id) * (n - id);
   }
-  int sum (int low, int high) {
+  T sum (int low, int high) {
     return pre(high) - pre(low - 1);
   }
 };
