@@ -18,7 +18,7 @@ struct SegTree {
   void pushLazy (int id, int l, int r) {
     if (lazy[id] == unit_lazy)
       return;
-    int& add_val = lazy[id];
+    T& add_val = lazy[id];
     int mid = (l + r) >> 1;
     st[id << 1]       = (mid - l + 1) * add_val;
     st[id << 1 | 1]   = (r - mid) * add_val;
