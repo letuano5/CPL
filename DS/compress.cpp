@@ -14,7 +14,7 @@ struct Compressor {
     val.resize(unique(all(val)) - val.begin());
   }
 
-  int idx(int x) {
+  int idx(T x) {
     return lower_bound(all(val), x) - val.begin() + 1;
   }
 };
