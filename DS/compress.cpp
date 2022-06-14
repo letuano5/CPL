@@ -5,7 +5,7 @@ template <class T>
 struct Compressor {
   vector <T> val;
 
-  void add (int x) {
+  void add (T x) {
     val.push_back(x);
   }
 
