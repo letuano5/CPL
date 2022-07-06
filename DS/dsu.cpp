@@ -1,8 +1,8 @@
 struct DSU {
   vector <int> par;
 
-  DSU (int _n = 0) {
-    par.assign(_n + 5, -1);
+  DSU (int n = 0) {
+    par.assign(n + 5, -1);
   }
 
   int root (int u) {
