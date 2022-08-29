@@ -1,4 +1,6 @@
 // usage: SegTree *root = new SegTree(l, r), root->func()
+// too slow, will update later
+
 struct SegTree {
   SegTree *lf, *rt;
   long long sum;
