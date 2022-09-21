@@ -7,7 +7,7 @@ struct RMQ {
   RMQ (int _n = 1) { // warning: n must be positive!
     n = _n;
     a.assign(n + 5, 0);
-    st.assign(n + 5, vector <int> (__lg(n) + 5, 0));
+    st.assign(n + 5, vector <T> (__lg(n) + 5, 0));
   }
  
   void ass (int id, int x) {
