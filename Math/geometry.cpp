@@ -73,3 +73,28 @@ struct Line {
     }
   }
 };
+
+struct Polygon {
+  vector<Point<T>> p;
+  T area = 0;
+
+  Polygon() {}
+  void add (Point<T> x) {
+    p.push_back(x);
+  }
+
+  void calc_area() {
+    area = 0;
+    p.emplace_back(p.front());
+    for (int i = 0; i + 1 < (int)p.size(); i++) {
+      area += (p[i].x - p[i + 1].x) * (p[i].y + p[i + 1].y);
+    }
+    area = abs(area);
+    p.pop_back();
+  }
+
+  bool operator < (const Polygon &that) const {
+    return area < that.area;
+  }
+};
+
