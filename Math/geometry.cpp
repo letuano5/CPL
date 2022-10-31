@@ -89,7 +89,7 @@ struct Polygon {
     for (int i = 0; i + 1 < (int)p.size(); i++) {
       area += (p[i].x - p[i + 1].x) * (p[i].y + p[i + 1].y);
     }
-    area = abs(area);
+    area = abs(area); // /2.0
     p.pop_back();
   }
 
