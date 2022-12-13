@@ -1,13 +1,12 @@
 /* 
- * not tested
+ * warning: can't work with negative numbers
  * support: add/subtract/multiply two big integers, divide big integer by small integer (<= 9e18)
 */
 
 const int BASE   = 1e9,
           DIGITS = 9;
-const int MAX_VAL = 1e4 + 5;
 
-typedef vector<long long> BigNum;
+typedef vector<int64_t> BigNum;
 
 BigNum stringToInt(string s){
   BigNum ans;
