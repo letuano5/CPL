@@ -1,3 +1,4 @@
+template<typename T>
 struct Matrix {
   vector <vector <T>> a;
 
@@ -31,13 +32,12 @@ struct Matrix {
     for (int i = 0; i < lhs.row(); i++)
       for (int j = 0; j < rhs.col(); j++)
         for (int k = 0; k < lhs.col(); k++) {
-          (ans.a[i][j] += lhs.a[i][k] * rhs.a[k][j] % MOD1);
-          if (ans.a[i][j] >= MOD1) ans.a[i][j] -= MOD1;
+          (ans.a[i][j] += lhs.a[i][k] * rhs.a[k][j]);
         }
     return ans;
   }
 
-  Matrix power (long long b) {
+  Matrix power (int64_t b) {
     Matrix a = *this, ans = identity(row());
     while (b > 0) {
       if (b & 1)
