@@ -43,9 +43,7 @@ template<typename T>
 struct Line {
   T a, b, c;
   Line (T x = 0, T y = 0, T z = 0) {
-    x = a;
-    y = b;
-    z = c;
+    a = x; b = y; c = z;
   }
   Line (Point<T> A, Point<T> B) {
     a = B.y - A.y;
