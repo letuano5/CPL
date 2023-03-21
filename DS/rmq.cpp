@@ -10,7 +10,7 @@ struct RMQ {
     st.assign(n + 5, vector <T> (__lg(n) + 5, 0));
   }
  
-  void ass (int id, int x) {
+  void ass (int id, T x) {
     a[id] = x;
   }
  
