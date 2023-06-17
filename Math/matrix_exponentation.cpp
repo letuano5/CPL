@@ -1,15 +1,15 @@
-template<typename T>
+template <typename T>
 struct Matrix {
-  vector <vector <T>> a;
+  vector<vector<T>> a;
 
-  Matrix (int r, int c) {
-    a.assign(r, vector <T> (c, 0));
+  Matrix(int r, int c) {
+    a.assign(r, vector<T>(c, 0));
   }
 
   int row() const { return a.size(); }
   int col() const { return a[0].size(); }
 
-  friend ostream& operator << (ostream& ost, const Matrix& x) {
+  friend ostream& operator<<(ostream& ost, const Matrix& x) {
     for (const auto& i : x.a) {
       for (const auto& j : i)
         ost << j << " ";
@@ -18,14 +18,14 @@ struct Matrix {
     return ost;
   }
 
-  Matrix identity (int n) {
+  Matrix identity(int n) {
     Matrix ans(n, n);
     for (int i = 0; i < n; i++)
       ans.a[i][i] = 1;
     return ans;
   }
 
-  Matrix operator * (const Matrix& rhs) const {
+  Matrix operator*(const Matrix& rhs) const {
     Matrix lhs = *this;
     Matrix ans(lhs.row(), rhs.col());
 
@@ -37,7 +37,7 @@ struct Matrix {
     return ans;
   }
 
-  Matrix power (int64_t b) {
+  Matrix power(int64_t b) {
     Matrix a = *this, ans = identity(row());
     while (b > 0) {
       if (b & 1)

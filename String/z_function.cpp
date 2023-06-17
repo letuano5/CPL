@@ -1,6 +1,6 @@
-vector <int> z_func (string s) {
+vector<int> z_func(string s) {
   int n = s.size();
-  vector <int> z(n, 0);
+  vector<int> z(n, 0);
 
   int l = 0, r = 0;
   for (int i = 1; i < n; i++) {

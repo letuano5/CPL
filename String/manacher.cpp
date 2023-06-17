@@ -1,7 +1,7 @@
 // https://docs.google.com/document/d/1dvJCzsaMlZbB8XyG789f1NQVv3-q52kiUNkCUGTANis/edit
 // my submission of https://cses.fi/problemset/task/1111/
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 const int N = 1e6 + 5;
@@ -37,7 +37,7 @@ void odd_manacher(string s, int *p) {
 void even_manacher(string s, int *p) {
   int n = s.size();
   string t = "";
-  for (char ch: s) {
+  for (char ch : s) {
     t += '.';
     t += ch;
   }
@@ -48,7 +48,7 @@ void even_manacher(string s, int *p) {
   }
 }
 
-int main(){
+int main() {
   ios_base::sync_with_stdio(0);
   cin.tie(0);
   cout.tie(0);
@@ -59,7 +59,6 @@ int main(){
 
   odd_manacher(s, odd_center);
   even_manacher(s, even_center);
-
 
   int best_l = -1, best_r = -1;
   s = ' ' + s;

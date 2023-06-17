@@ -1,16 +1,16 @@
 typedef long long LL;
 struct Line {
   LL a, b;
-  Line (LL x = 0, LL y = 0) {
+  Line(LL x = 0, LL y = 0) {
     a = x;
     b = y;
   }
-  LL eval (const LL &x) const {
+  LL eval(const LL &x) const {
     return a * x + b;
   }
 
   // first less
-  LL intersect (const Line &other) const {
+  LL intersect(const Line &other) const {
     LL x = (other.b - b) / (a - other.a);
     while (eval(x) <= other.eval(x))
       x--;
@@ -23,7 +23,7 @@ struct Line {
 struct CHT {
   deque<Line> dq;
 
-  LL get_min (LL x) {
+  LL get_min(LL x) {
     assert(dq.size() >= 1);
     if (dq.size() == 1) {
       return dq[0].eval(x);
@@ -35,15 +35,14 @@ struct CHT {
       ans = min(ans, min(dq[mid].eval(x), dq[mid + 1].eval(x)));
       if (dq[mid].eval(x) > dq[mid + 1].eval(x)) {
         low = mid + 1;
-      }
-      else {
+      } else {
         high = mid - 1;
       }
     }
     return ans;
   }
 
-  bool better (Line last, Line before_last, Line new_line) {
+  bool better(Line last, Line before_last, Line new_line) {
     __int128_t fi = (before_last.b - last.b);
     fi *= (new_line.a - last.a);
     __int128_t se = (last.b - new_line.b);
@@ -51,7 +50,7 @@ struct CHT {
     return fi >= se;
   }
 
-  void add_back (LL a, LL b) {
+  void add_back(LL a, LL b) {
     Line new_line(a, b);
     // dq.back().intersect(dq[dq.size() - 2]) >= new_line.intersect(dq.back())
     while (dq.size() >= 2) {
@@ -66,7 +65,7 @@ struct CHT {
     dq.push_back(new_line);
   }
 
-  void add_front (LL a, LL b) {
+  void add_front(LL a, LL b) {
     Line new_line(a, b);
     while (dq.size() >= 2) {
       Line last = dq[0];

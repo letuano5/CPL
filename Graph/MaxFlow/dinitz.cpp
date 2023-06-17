@@ -1,7 +1,7 @@
 struct Dinitz {
   struct Edge {
     int u, v, cap, flow;
-    Edge (int a = 0, int b = 0, int c = 0, int d = 0) {
+    Edge(int a = 0, int b = 0, int c = 0, int d = 0) {
       u = a,
       v = b;
       cap = c;
@@ -10,21 +10,21 @@ struct Dinitz {
   };
 
   int n, s, t;
-  vector <vector <int>> g;
-  vector <Edge> edges;
-  vector <int> d, ptr;
+  vector<vector<int>> g;
+  vector<Edge> edges;
+  vector<int> d, ptr;
 
-  Dinitz (int _n = 0, int _s = 0, int _t = 0) {
+  Dinitz(int _n = 0, int _s = 0, int _t = 0) {
     n = _n;
     s = _s;
     t = _t;
 
-    g.assign(n + 5, vector <int>());
+    g.assign(n + 5, vector<int>());
     d.assign(n + 5, -1);
     ptr.assign(n + 5, 0);
   }
 
-  void add_edge (int u, int v, int w) {
+  void add_edge(int u, int v, int w) {
     g[u].emplace_back(edges.size());
     edges.emplace_back(u, v, w, 0);
     g[v].emplace_back(edges.size());
@@ -36,7 +36,7 @@ struct Dinitz {
     ptr.assign(n + 5, 0);
 
     d[s] = 0;
-    queue <int> qu;
+    queue<int> qu;
     qu.emplace(s);
 
     while (!qu.empty()) {
@@ -59,7 +59,7 @@ struct Dinitz {
     return d[t] != -1;
   }
 
-  int dfs (int u, int pushed) {
+  int dfs(int u, int pushed) {
     if (u == t)
       return pushed;
     if (!pushed)

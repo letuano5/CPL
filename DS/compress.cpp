@@ -3,9 +3,9 @@
 #define all(x) (x).begin(), (x).end()
 template <class T>
 struct Compressor {
-  vector <T> val;
+  vector<T> val;
 
-  void add (T x) {
+  void add(T x) {
     val.push_back(x);
   }
 

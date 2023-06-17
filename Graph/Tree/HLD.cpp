@@ -8,7 +8,7 @@ int id_chain[N];
 
 int tin[N], tout[N], time_dfs;
 
-void dfs_sz (int u) {
+void dfs_sz(int u) {
   sz[u] = 1;
   for (int v : g[u]) {
     if (v == par[u])
@@ -20,7 +20,7 @@ void dfs_sz (int u) {
   }
 }
 
-void dfs_hld (int u) {
+void dfs_hld(int u) {
   tin[u] = ++time_dfs;
   if (!head_chain[num_chain])
     head_chain[num_chain] = u;
@@ -49,7 +49,7 @@ void dfs_hld (int u) {
 }
 
 // for query or update on path (u, v):
-int64_t query (int u, int v) {
+int64_t query(int u, int v) {
   int64_t ans = -9e18;
   while (true) {
     if (!u || !v)
