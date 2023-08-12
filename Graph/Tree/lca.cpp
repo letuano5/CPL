@@ -31,6 +31,7 @@ struct Tree {
     }
   }
   void init() {
+    h[1] = 1;
     dfs(1);
   }
   int lca(int u, int v) {
