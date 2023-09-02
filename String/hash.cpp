@@ -4,6 +4,10 @@ int64_t rd(int64_t l, int64_t r) {
 }
 
 struct Hash {
+  /*
+    static vector<int64_t> power = {1};
+    vector<int64_t> Hash::power;
+  */
   inline static vector<int64_t> power = {1};
   inline static int64_t BASE = -1, MOD = -1;
   vector<int64_t> h;
