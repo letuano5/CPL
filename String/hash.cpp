@@ -7,6 +7,7 @@ struct Hash {
   /*
     static vector<int64_t> power = {1};
     vector<int64_t> Hash::power;
+    do something with Hash::power
   */
   inline static vector<int64_t> power = {1};
   inline static int64_t BASE = -1, MOD = -1;
