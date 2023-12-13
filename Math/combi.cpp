@@ -17,8 +17,9 @@ void prep_comb() {
   }
 }
 
-template <int MOD>
 struct Combi {
+  static constexpr int N = 2e5 + 5;
+
   int64_t fac[N], ifac[N];
 
   int64_t power(int64_t x, int p) {
@@ -30,7 +31,7 @@ struct Combi {
     return res;
   }
 
-  void genFac(int size) {
+  Combi(int size = N - 1) {
     fac[0] = 1;
     for (int i = 1; i <= size; ++i)
       fac[i] = fac[i - 1] * i % MOD;
