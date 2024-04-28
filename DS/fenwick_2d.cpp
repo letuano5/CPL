@@ -1,5 +1,4 @@
 // small coordinate, 1 - indexed
-// for large coordinate, please go to "ft_2d.cpp"
 struct BIT2D {
   typedef int T;
 
