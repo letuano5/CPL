@@ -11,6 +11,10 @@ struct Point {
     ist >> p.x >> p.y;
     return ist;
   }
+  friend ostream &operator<<(ostream &ost, Point &p) {
+    ost << "(" << p.x << " " << p.y << ")";
+    return ost;
+  }
   Point operator+(const Point &b) const {
     return Point(x + b.x, y + b.y);
   }
@@ -20,10 +24,13 @@ struct Point {
   LD dist(const Point &rhs) const {
     return sqrt((x - rhs.x) * (x - rhs.x) + (y - rhs.y) * (y - rhs.y));
   }
+  T sqr_dist(const Point &rhs) {
+    return (x - rhs.x) * (x - rhs.x) + (y - rhs.y) * (y - rhs.y);
+  }
   T dot(const Point &rhs) const {
     return x * rhs.x + y * rhs.y;
   }
-  T cross(const Point &rhs) const {
+  T operator*(const Point &rhs) const {
     return x * rhs.y - y * rhs.x;
   }
   bool operator<(const Point &rhs) const {
@@ -72,6 +79,7 @@ struct Line {
   }
 };
 
+template<typename T>
 struct Polygon {
   vector<Point<T>> p;
   T area = 0;
@@ -93,5 +101,42 @@ struct Polygon {
 
   bool operator<(const Polygon &that) const {
     return area < that.area;
+  }
+
+  vector<Point<T>> convex_hull() {
+    assert(p.size());
+    vector<Point<T>> pts = p;
+    int n = p.size();
+    int min_pos = 0;
+    for (int i = 1; i < n; i++) {
+      if (pts[i].x < pts[min_pos].x) {
+        min_pos = i;
+      }
+      else if (pts[i].x == pts[min_pos].x && pts[i].y < pts[min_pos].y) {
+        min_pos = i;
+      }
+    }
+    swap(pts[0], pts[min_pos]);
+    Point<T> A = p[0];
+    sort(pts.begin() + 1, pts.end(), [&](const Point<T>& B, const Point<T>& C) {
+      /// AB * AC > 0
+      if ((B - A) * (C - A) != 0) {
+        return ((B - A) * (C - A)) > 0;
+      }
+      return A.sqr_dist(B) < A.sqr_dist(C);
+    });
+    /// AB * BC <= 0
+    /// delete B
+    auto violate = [&](Point<T> A, Point<T> B, Point<T> C) {
+      return (B - A) * (C - B) <= 0;
+    };
+    vector<Point<T>> hull;
+    for (int i = 0; i < n; i++) {
+      while (int(hull.size()) >= 2 && violate(hull[hull.size() - 2], hull.back(), pts[i])) {
+        hull.pop_back();
+      }
+      hull.push_back(pts[i]);
+    }
+    return hull;
   }
 };
