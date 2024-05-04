@@ -35,6 +35,8 @@ struct Hash {
   Hash() {
     init();
   }
+  // s is 0-indexed
+  // hash is 1-indexed
   Hash(string s) {
     init();
     while ((int)power.size() <= (int)s.size() + 1) {
@@ -55,5 +57,12 @@ struct Hash {
     ans %= MOD;
     if (ans < 0) ans += MOD;
     return ans;
+  }
+  void push_back(char c) {
+    init();
+    if (power.empty()) power.emplace_back(1);
+    if (h.empty()) h.emplace_back(0);
+    power.emplace_back(__int128_t(power.back()) * BASE % MOD);
+    h.emplace_back((__int128_t(h.back()) * BASE + c) % MOD);
   }
 };
