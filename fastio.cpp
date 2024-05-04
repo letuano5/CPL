@@ -1,5 +1,5 @@
 // copied from https://github.com/the-tourist/algo
-// be careful when reading string!
+// be careful when doing operations on floating point numbers/strings
 
 static struct FastInput {
   static constexpr int BUF_SIZE = 1 << 20;
