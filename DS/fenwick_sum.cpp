@@ -14,6 +14,17 @@ struct FT {
     for (; id > 0; id -= id & -id) ans += ft[id];
     return ans;
   }
+  int lower_bound(T x) {
+    int pos = 0;
+    T sum = 0;
+    for (int i = 19; i >= 0; i--) {
+      if (pos + (1 << i) < ft.size() && sum + ft[pos + (1 << i)] < x) {
+        sum += ft[pos + (1 << i)];
+        pos += 1 << i;
+      }
+    }
+    return pos + 1;
+  }
 };
 
 template <class T>
