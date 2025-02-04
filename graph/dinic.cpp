@@ -1,4 +1,4 @@
-struct Dinitz {
+struct Dinic {
   struct Edge {
     int u, v, cap, flow;
     Edge(int a = 0, int b = 0, int c = 0, int d = 0) {

@@ -1,5 +1,7 @@
-// copied from https://github.com/the-tourist/algo
-// be careful when doing operations on floating point numbers/strings
+/**
+ * Author: tourist
+ * Description: Support faster i/o. Be careful when using it when you have to input strings.
+ */
 
 static struct FastInput {
   static constexpr int BUF_SIZE = 1 << 20;
