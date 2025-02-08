@@ -8,8 +8,8 @@ struct Matrix {
 
   int row() const { return a.size(); }
   int col() const { return a[0].size(); }
-  auto& operator[](int i) { return data[i]; }
-  const auto& operator[](int i) const { return data[i]; }
+  auto& operator[](int i) { return a[i]; }
+  const auto& operator[](int i) const { return a[i]; }
 
   friend ostream& operator<<(ostream& ost, const Matrix& x) {
     for (const auto& i : x.a) {
