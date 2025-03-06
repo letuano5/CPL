@@ -55,7 +55,7 @@ struct Matrix {
         for (int j = 0; j < b.col(); ++j) {
           c[i][j] += a[i][k] * b[k][j];
         }
-        if (k % 8 == 0) {
+        if (k % 8 == 0) { // or get min right after += operation
           for (int j = 0; j < b.col(); ++j) {
             c[i][j] = min(c[i][j], c[i][j] - 8 * modmod);
           }
