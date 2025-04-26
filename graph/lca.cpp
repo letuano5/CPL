@@ -4,6 +4,8 @@ struct Tree {
   vector<vector<pair<int, int>>> g;
   vector<int64_t> dep;
   vector<int> h;
+  vector<int> tin, tout, ord;
+  int time_dfs;
   int n;
   Tree(int n = 0) {
     this->n = n;
@@ -11,12 +13,18 @@ struct Tree {
     g.assign(n + 5, vector<pair<int, int>>());
     dep.assign(n + 5, 0);
     h.assign(n + 5, 0);
+    tin.assign(n + 5, 0);
+    tout.assign(n + 5, 0);
+    ord.assign(n + 5, 0);
+    time_dfs = 0;
   }
   void add_edge(int u, int v, int w = 1) {
     g[u].emplace_back(v, w);
     g[v].emplace_back(u, w);
   }
   void dfs(int u) {
+    tin[u] = ++time_dfs;
+    ord[time_dfs] = u;
     for (int i = 0; f[f[u][i]][i]; i++) {
       f[u][i + 1] = f[f[u][i]][i];
     }
@@ -29,6 +37,7 @@ struct Tree {
       dep[v] = dep[u] + w;
       dfs(v);
     }
+    tout[u] = time_dfs;
   }
   void init() {
     h[1] = 1;
@@ -53,7 +62,21 @@ struct Tree {
   int64_t dist(int u, int v) {
     return dep[u] + dep[v] - 2 * dep[lca(u, v)];
   }
+  // u contains v
+  bool is_ancestor(int u, int v) {
+    return tin[u] <= tin[v] && tout[v] <= tout[u];
+  }
+  int jump(int u, int k) {
+    for (int i = int(f[u].size()) - 1; i >= 0; i--) {
+      if (k >= (1 << i)) {
+        k -= 1 << i;
+        u = f[u][i];
+      }
+    }
+    return u;
+  }
 };
+
 
 // <O(nlogn), O(1)>
 #define sz(x) (int)(x).size()
