@@ -22,7 +22,7 @@ int32_t main() {
   for (int iTest = 1;; iTest++) {
     ofstream inp((NAME + ".inp").c_str());
 
-    // Gen test here, using inp instead of cout
+    // Print test here, using inp instead of cout
 
     inp.close();
     system((NAME + ".exe").c_str());
